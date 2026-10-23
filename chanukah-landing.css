@@ -1,0 +1,334 @@
+/* Chanukah Landing Page for ChabadOne - v2.0.0
+   One-screen hero + one compact content band. All layout lives inside the
+   template's own wrappers (.chl-*), so ChabadOne's section flow can't move it. */
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Montserrat:wght@400;500;600;700&family=Frank+Ruhl+Libre:wght@500&display=swap");
+
+:root {
+    --ch-night: #08132e;
+    --ch-navy: #12265a;
+    --ch-royal: #1f3f8f;
+    --ch-gold: #e2b44f;
+    --ch-gold-lt: #f8dc95;
+    --ch-gold-dk: #a8741a;
+    --ch-cream: #fbf6ea;
+    --ch-ink: #14204a;
+    --ch-muted: #4d5677;
+    --ch-display: Cinzel, Georgia, "Times New Roman", serif;
+    --ch-body: Montserrat, Arial, sans-serif;
+}
+
+/* ---------- Neutralize ChabadOne's default minisite layout ---------- */
+div#chabad_main_content, div#chabad_body_content { width: 100% !important; float: none !important; margin: 0 !important; background: var(--ch-cream); }
+div.chabad_left_column { width: 100% !important; float: none !important; margin: 0 !important; padding: 0 !important; min-height: 0 !important; background: var(--ch-cream) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90'%3E%3Cpath d='M45 33L55.4 51H34.6Z M45 57L34.6 39H55.4Z' fill='none' stroke='%23e2b44f' stroke-opacity='.2' stroke-width='1.2'/%3E%3C/svg%3E"); }
+.section_root div#ContentBody .content-area-parent, .content-area-parent { display: block !important; }
+.section_root #co_body_container, .cco_templateless_page #BodyContainer { width: 100%; }
+#border_bottom { height: 0; overflow: hidden; font-size: 0; line-height: 0; background: var(--ch-cream); }
+.chl, .chl * { box-sizing: border-box; }
+
+/* ================= HERO ================= */
+.chabad_header.chl-hero {
+    position: relative;
+    overflow: hidden;
+    height: auto !important;
+    min-height: clamp(560px, 80vh, 760px);
+    padding: 64px 24px 150px;
+    text-align: left;
+    background:
+        radial-gradient(circle at 74% 42%, rgba(255, 170, 70, 0.32) 0%, rgba(255, 170, 70, 0) 34%),
+        linear-gradient(160deg, #050d22 0%, #0d1d48 55%, #1b3679 100%);
+}
+.chl-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+        radial-gradient(1.5px 1.5px at 20px 30px, #fff 50%, transparent 51%),
+        radial-gradient(1px 1px at 90px 80px, #f8dc95 50%, transparent 51%),
+        radial-gradient(1.5px 1.5px at 160px 20px, #fff 50%, transparent 51%),
+        radial-gradient(1px 1px at 200px 120px, #fff 50%, transparent 51%),
+        radial-gradient(1px 1px at 60px 140px, #f8dc95 50%, transparent 51%);
+    background-size: 230px 180px;
+    opacity: 0.6;
+    animation: chTwinkle 4s ease-in-out infinite alternate;
+}
+.chl-hero::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    height: 120px;
+    background: linear-gradient(180deg, rgba(251, 246, 234, 0) 0%, var(--ch-cream) 100%);
+    pointer-events: none;
+}
+.chl-hero .ch-bh { position: absolute; top: 16px; right: 22px; z-index: 3; font-family: "Frank Ruhl Libre", Georgia, serif; font-size: 15px; color: var(--ch-gold-lt); }
+.chl-hero-inner {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    align-items: center;
+    gap: 40px;
+    max-width: 1140px;
+    margin: 0 auto;
+}
+.chl-eyebrow {
+    font-family: var(--ch-body);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--ch-gold);
+    margin-bottom: 14px;
+}
+.chl-eyebrow::before { content: ""; display: inline-block; width: 34px; height: 2px; margin-right: 12px; vertical-align: middle; background: var(--ch-gold); }
+.chabad_header .headerTitle.chl-title {
+    margin: 0 0 14px;
+    padding: 0 !important;
+    font-family: var(--ch-display) !important;
+    font-weight: 900;
+    font-size: clamp(46px, 6.4vw, 88px);
+    line-height: 0.98;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-align: left !important;
+    color: var(--ch-gold-lt);
+    background: linear-gradient(180deg, #fff6d6 0%, #f8dc95 38%, #e2b44f 66%, #b98420 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 4px 18px rgba(255, 170, 70, 0.3));
+}
+.chl-tagline { max-width: 520px; font-family: var(--ch-body); font-size: 19px; line-height: 1.55; color: #e9e2cf; margin-bottom: 20px; }
+.chabad_header .header-desc.chl-date {
+    display: inline-block;
+    padding: 9px 22px;
+    font-family: var(--ch-body);
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: var(--ch-gold-lt);
+    border: 1px solid rgba(226, 180, 79, 0.65);
+    border-radius: 40px;
+    background: rgba(8, 19, 46, 0.5);
+}
+.chl-countdown-slot { min-height: 0; font-size: 0; line-height: 0; margin: 22px 0 0; }
+.chl-countdown-slot.ready { font-size: 14px; line-height: 1.2; }
+.chl-cd { display: flex; align-items: center; gap: 10px; font-family: var(--ch-body); }
+.chl-cd-label { width: 92px; font-size: 11px; font-weight: 700; letter-spacing: 2px; line-height: 1.4; text-transform: uppercase; color: var(--ch-gold); }
+.chl-cd > span {
+    width: 70px;
+    padding: 9px 0 7px;
+    text-align: center;
+    border: 1px solid rgba(226, 180, 79, 0.5);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.06);
+}
+.chl-cd b { display: block; font-family: var(--ch-display); font-size: 27px; color: #fff; line-height: 1.1; }
+.chl-cd i { display: block; font-style: normal; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--ch-gold-lt); }
+.chl-live { font-family: var(--ch-body); font-size: 19px; font-weight: 600; color: var(--ch-gold-lt); }
+.chl-live b { font-family: var(--ch-display); font-size: 26px; color: #fff; }
+.chl-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 28px; }
+.chl-btn p { margin: 0; display: inline; }
+.chl-btn a {
+    display: inline-block;
+    padding: 15px 30px;
+    font-family: var(--ch-body);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none !important;
+    border-radius: 40px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+.chl-btn-gold a { color: var(--ch-night) !important; background: linear-gradient(180deg, var(--ch-gold-lt) 0%, var(--ch-gold) 60%, var(--ch-gold-dk) 100%); box-shadow: 0 10px 28px rgba(226, 180, 79, 0.4); }
+.chl-btn-gold a:hover { transform: translateY(-2px); box-shadow: 0 14px 34px rgba(226, 180, 79, 0.55); }
+.chl-btn-ghost a { color: var(--ch-gold-lt) !important; border: 2px solid rgba(226, 180, 79, 0.75); }
+.chl-btn-ghost a:hover { background: rgba(226, 180, 79, 0.15); }
+
+.chl-hero-art { position: relative; display: flex; align-items: center; justify-content: center; }
+.chl-hero-art::before {
+    content: "";
+    position: absolute;
+    width: 92%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 1px solid rgba(226, 180, 79, 0.35);
+    box-shadow: 0 0 0 18px rgba(226, 180, 79, 0.05), 0 0 0 40px rgba(226, 180, 79, 0.03);
+    background: radial-gradient(circle, rgba(255, 170, 70, 0.18) 0%, rgba(255, 170, 70, 0) 65%);
+}
+.ch-menorah-slot {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 440px;
+    aspect-ratio: 360 / 230;
+    font-size: 0;
+    background: url("data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMzYwIDIzMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImNoR29sZCIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2ZiZTNhMSIgLz48c3RvcCBvZmZzZXQ9IjAuNSIgc3RvcC1jb2xvcj0iI2UyYjQ0ZiIgLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNhODc0MWEiIC8+PC9saW5lYXJHcmFkaWVudD48cmFkaWFsR3JhZGllbnQgaWQ9ImNoRmxhbWUiIGN4PSIwLjUiIGN5PSIwLjcyIiByPSIwLjY1Ij48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNmZmZiZTYiIC8+PHN0b3Agb2Zmc2V0PSIwLjQiIHN0b3AtY29sb3I9IiNmZmQzNmIiIC8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjZmY3YTFhIiAvPjwvcmFkaWFsR3JhZGllbnQ+PHJhZGlhbEdyYWRpZW50IGlkPSJjaEdsb3dHcmFkIj48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNmZmJlNWEiIHN0b3Atb3BhY2l0eT0iMC43IiAvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2ZmYmU1YSIgc3RvcC1vcGFjaXR5PSIwIiAvPjwvcmFkaWFsR3JhZGllbnQ+PC9kZWZzPjxnIHN0cm9rZT0idXJsKCNjaEdvbGQpIiBzdHJva2Utd2lkdGg9IjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgZmlsbD0ibm9uZSI+PHBhdGggZD0iTTE4MCAxODJMNDAgNzZNMTgwIDE4MkwzMjAgNzZNMTgwIDE2MEw3NSA3Nk0xODAgMTYwTDI4NSA3Nk0xODAgMTM4TDExMCA3Nk0xODAgMTM4TDI1MCA3Nk0xODAgMTE2TDE0NSA3Nk0xODAgMTE2TDIxNSA3NiIgLz48L2c+PGcgZmlsbD0idXJsKCNjaEdvbGQpIj48cmVjdCB4PSIxNzYiIHk9IjUyIiB3aWR0aD0iOCIgaGVpZ2h0PSIxNTQiIHJ4PSIzIiAvPjxwYXRoIGQ9Ik0xNDAgMjI0TDIyMCAyMjRMMjA2IDIwNEwxNTQgMjA0WiIgLz48cmVjdCB4PSIzMCIgeT0iNzAiIHdpZHRoPSIyMCIgaGVpZ2h0PSI2IiByeD0iMiIgLz48cmVjdCB4PSI2NSIgeT0iNzAiIHdpZHRoPSIyMCIgaGVpZ2h0PSI2IiByeD0iMiIgLz48cmVjdCB4PSIxMDAiIHk9IjcwIiB3aWR0aD0iMjAiIGhlaWdodD0iNiIgcng9IjIiIC8+PHJlY3QgeD0iMTM1IiB5PSI3MCIgd2lkdGg9IjIwIiBoZWlnaHQ9IjYiIHJ4PSIyIiAvPjxyZWN0IHg9IjIwNSIgeT0iNzAiIHdpZHRoPSIyMCIgaGVpZ2h0PSI2IiByeD0iMiIgLz48cmVjdCB4PSIyNDAiIHk9IjcwIiB3aWR0aD0iMjAiIGhlaWdodD0iNiIgcng9IjIiIC8+PHJlY3QgeD0iMjc1IiB5PSI3MCIgd2lkdGg9IjIwIiBoZWlnaHQ9IjYiIHJ4PSIyIiAvPjxyZWN0IHg9IjMxMCIgeT0iNzAiIHdpZHRoPSIyMCIgaGVpZ2h0PSI2IiByeD0iMiIgLz48cmVjdCB4PSIxNzAiIHk9IjQ2IiB3aWR0aD0iMjAiIGhlaWdodD0iNiIgcng9IjIiIC8+PC9nPjxnIGZpbGw9IiNmYmYzZTAiPjxyZWN0IHg9IjM2IiB5PSI0MiIgd2lkdGg9IjgiIGhlaWdodD0iMjgiIHJ4PSIyIiAvPjxyZWN0IHg9IjcxIiB5PSI0MiIgd2lkdGg9IjgiIGhlaWdodD0iMjgiIHJ4PSIyIiAvPjxyZWN0IHg9IjEwNiIgeT0iNDIiIHdpZHRoPSI4IiBoZWlnaHQ9IjI4IiByeD0iMiIgLz48cmVjdCB4PSIxNDEiIHk9IjQyIiB3aWR0aD0iOCIgaGVpZ2h0PSIyOCIgcng9IjIiIC8+PHJlY3QgeD0iMjExIiB5PSI0MiIgd2lkdGg9IjgiIGhlaWdodD0iMjgiIHJ4PSIyIiAvPjxyZWN0IHg9IjI0NiIgeT0iNDIiIHdpZHRoPSI4IiBoZWlnaHQ9IjI4IiByeD0iMiIgLz48cmVjdCB4PSIyODEiIHk9IjQyIiB3aWR0aD0iOCIgaGVpZ2h0PSIyOCIgcng9IjIiIC8+PHJlY3QgeD0iMzE2IiB5PSI0MiIgd2lkdGg9IjgiIGhlaWdodD0iMjgiIHJ4PSIyIiAvPjxyZWN0IHg9IjE3NiIgeT0iMjQiIHdpZHRoPSI4IiBoZWlnaHQ9IjIyIiByeD0iMiIgLz48L2c+PGcgPjxjaXJjbGUgY3g9IjE4MCIgY3k9IjEyIiByPSIxOCIgZmlsbD0idXJsKCNjaEdsb3dHcmFkKSIgLz48cGF0aCBkPSJNMTgwIDIyQzE3NCAxOCAxNzUgMTAgMTgwIDBDMTg1IDEwIDE4NiAxOCAxODAgMjJaIiBmaWxsPSJ1cmwoI2NoRmxhbWUpIiAvPjwvZz48ZyA+PGNpcmNsZSBjeD0iMzIwIiBjeT0iMzAiIHI9IjE3IiBmaWxsPSJ1cmwoI2NoR2xvd0dyYWQpIiAvPjxwYXRoIGQ9Ik0zMjAgNDBDMzE0IDM2IDMxNSAyOCAzMjAgMThDMzI1IDI4IDMyNiAzNiAzMjAgNDBaIiBmaWxsPSJ1cmwoI2NoRmxhbWUpIiAvPjwvZz48ZyA+PGNpcmNsZSBjeD0iMjg1IiBjeT0iMzAiIHI9IjE3IiBmaWxsPSJ1cmwoI2NoR2xvd0dyYWQpIiAvPjxwYXRoIGQ9Ik0yODUgNDBDMjc5IDM2IDI4MCAyOCAyODUgMThDMjkwIDI4IDI5MSAzNiAyODUgNDBaIiBmaWxsPSJ1cmwoI2NoRmxhbWUpIiAvPjwvZz48ZyA+PGNpcmNsZSBjeD0iMjUwIiBjeT0iMzAiIHI9IjE3IiBmaWxsPSJ1cmwoI2NoR2xvd0dyYWQpIiAvPjxwYXRoIGQ9Ik0yNTAgNDBDMjQ0IDM2IDI0NSAyOCAyNTAgMThDMjU1IDI4IDI1NiAzNiAyNTAgNDBaIiBmaWxsPSJ1cmwoI2NoRmxhbWUpIiAvPjwvZz48ZyA+PGNpcmNsZSBjeD0iMjE1IiBjeT0iMzAiIHI9IjE3IiBmaWxsPSJ1cmwoI2NoR2xvd0dyYWQpIiAvPjxwYXRoIGQ9Ik0yMTUgNDBDMjA5IDM2IDIxMCAyOCAyMTUgMThDMjIwIDI4IDIyMSAzNiAyMTUgNDBaIiBmaWxsPSJ1cmwoI2NoRmxhbWUpIiAvPjwvZz48ZyA+PGNpcmNsZSBjeD0iMTQ1IiBjeT0iMzAiIHI9IjE3IiBmaWxsPSJ1cmwoI2NoR2xvd0dyYWQpIiAvPjxwYXRoIGQ9Ik0xNDUgNDBDMTM5IDM2IDE0MCAyOCAxNDUgMThDMTUwIDI4IDE1MSAzNiAxNDUgNDBaIiBmaWxsPSJ1cmwoI2NoRmxhbWUpIiAvPjwvZz48ZyA+PGNpcmNsZSBjeD0iMTEwIiBjeT0iMzAiIHI9IjE3IiBmaWxsPSJ1cmwoI2NoR2xvd0dyYWQpIiAvPjxwYXRoIGQ9Ik0xMTAgNDBDMTA0IDM2IDEwNSAyOCAxMTAgMThDMTE1IDI4IDExNiAzNiAxMTAgNDBaIiBmaWxsPSJ1cmwoI2NoRmxhbWUpIiAvPjwvZz48ZyA+PGNpcmNsZSBjeD0iNzUiIGN5PSIzMCIgcj0iMTciIGZpbGw9InVybCgjY2hHbG93R3JhZCkiIC8+PHBhdGggZD0iTTc1IDQwQzY5IDM2IDcwIDI4IDc1IDE4QzgwIDI4IDgxIDM2IDc1IDQwWiIgZmlsbD0idXJsKCNjaEZsYW1lKSIgLz48L2c+PGcgPjxjaXJjbGUgY3g9IjQwIiBjeT0iMzAiIHI9IjE3IiBmaWxsPSJ1cmwoI2NoR2xvd0dyYWQpIiAvPjxwYXRoIGQ9Ik00MCA0MEMzNCAzNiAzNSAyOCA0MCAxOEM0NSAyOCA0NiAzNiA0MCA0MFoiIGZpbGw9InVybCgjY2hGbGFtZSkiIC8+PC9nPjwvc3ZnPg==") center / contain no-repeat;
+    filter: drop-shadow(0 0 26px rgba(255, 170, 60, 0.4));
+}
+.ch-menorah-slot.live { background: none; }
+.ch-menorah-slot svg { display: block; width: 100%; height: 100%; overflow: visible; }
+.ch-menorah-slot .light { transition: opacity 0.8s ease; }
+.ch-menorah-slot .light.out { opacity: 0; }
+.ch-menorah-slot .flame { transform-box: fill-box; transform-origin: 50% 100%; animation: chFlicker 1.4s ease-in-out infinite alternate; }
+.ch-menorah-slot .light:nth-child(2n) .flame { animation-duration: 1.1s; animation-delay: -0.4s; }
+.ch-menorah-slot .light:nth-child(3n) .flame { animation-duration: 1.7s; animation-delay: -0.8s; }
+.ch-menorah-slot .glow { animation: chGlow 2.2s ease-in-out infinite alternate; }
+.ch-start-date { display: none !important; }
+
+/* Navigation (only shows if the page has menu items) */
+div#chabad_head .chabad_navigator_bar { width: 100%; margin: 0; border: none; border-bottom: 3px solid var(--ch-gold); background: var(--ch-night); text-align: center; }
+div#chabad_head .chabad_navigator_bar ul li a, #navigation li.parent a.parent { font-family: var(--ch-body) !important; font-size: 13px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; line-height: 48px; padding: 0 18px; color: #f8f1dd; background: transparent; border-right: none; text-decoration: none; }
+#navigation li.parent a.parent:hover, #navigation li.parent.selected a.parent { color: var(--ch-night); background: var(--ch-gold); }
+
+/* ================= MAIN BAND ================= */
+.chl-main { position: relative; z-index: 5; max-width: 1140px; margin: -120px auto 0; padding: 0 20px 36px; text-align: left; }
+
+/* three quick-action cards overlapping the hero */
+.chl-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.chl-card {
+    position: relative;
+    padding: 24px 24px 22px 104px;
+    min-height: 140px;
+    background: #fff;
+    border-radius: 20px;
+    border-top: 3px solid var(--ch-gold);
+    box-shadow: 0 18px 44px rgba(8, 19, 46, 0.16);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.chl-card:hover { transform: translateY(-5px); box-shadow: 0 24px 54px rgba(8, 19, 46, 0.22); }
+.chl-card::before {
+    content: "";
+    position: absolute;
+    left: 22px;
+    top: 24px;
+    width: 64px;
+    height: 64px;
+    border-radius: 18px;
+    background: var(--chl-ico) center / 46px auto no-repeat, linear-gradient(160deg, var(--ch-royal), var(--ch-night));
+    box-shadow: 0 8px 18px rgba(8, 19, 46, 0.25);
+}
+.chl-ico-menorah { --chl-ico: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCA2NCA0OCc+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSdnJyB4MT0nMCcgeTE9JzAnIHgyPScwJyB5Mj0nMSc+PHN0b3Agb2Zmc2V0PScwJyBzdG9wLWNvbG9yPScjZmJlM2ExJy8+PHN0b3Agb2Zmc2V0PScxJyBzdG9wLWNvbG9yPScjYzg5MjJlJy8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PGcgc3Ryb2tlPSd1cmwoI2cpJyBzdHJva2Utd2lkdGg9JzIuNCcgc3Ryb2tlLWxpbmVjYXA9J3JvdW5kJyBmaWxsPSdub25lJz48cGF0aCBkPSdNMzIgMTJWNDJNMjQgNDRINDBNMzIgMzhMNiAxOE0zMiAzNEwxMyAxOE0zMiAzMEwyMCAxOE0zMiAyNkwyNyAxOE0zMiAzOEw1OCAxOE0zMiAzNEw1MSAxOE0zMiAzMEw0NCAxOE0zMiAyNkwzNyAxOCcvPjwvZz48ZyBmaWxsPScjZmZiMzQ3Jz48Y2lyY2xlIGN4PSc2JyBjeT0nMTMnIHI9JzIuNicvPjxjaXJjbGUgY3g9JzEzJyBjeT0nMTMnIHI9JzIuNicvPjxjaXJjbGUgY3g9JzIwJyBjeT0nMTMnIHI9JzIuNicvPjxjaXJjbGUgY3g9JzI3JyBjeT0nMTMnIHI9JzIuNicvPjxjaXJjbGUgY3g9JzMyJyBjeT0nNicgcj0nMi42Jy8+PGNpcmNsZSBjeD0nMzcnIGN5PScxMycgcj0nMi42Jy8+PGNpcmNsZSBjeD0nNDQnIGN5PScxMycgcj0nMi42Jy8+PGNpcmNsZSBjeD0nNTEnIGN5PScxMycgcj0nMi42Jy8+PGNpcmNsZSBjeD0nNTgnIGN5PScxMycgcj0nMi42Jy8+PC9nPjwvc3ZnPg=="); }
+.chl-ico-donut { --chl-ico: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCA2NCA0OCc+PGVsbGlwc2UgY3g9JzMyJyBjeT0nMjgnIHJ4PScyNCcgcnk9JzE3JyBmaWxsPScjYzk4MjNjJy8+PGVsbGlwc2UgY3g9JzMyJyBjeT0nMjQnIHJ4PScyMicgcnk9JzEzJyBmaWxsPScjZTNhNTVhJy8+PGVsbGlwc2UgY3g9JzMyJyBjeT0nMTknIHJ4PScxNicgcnk9JzcnIGZpbGw9JyNmZmYnLz48Y2lyY2xlIGN4PSczMycgY3k9JzE4JyByPSczLjInIGZpbGw9JyNkMjJiM2EnLz48ZyBmaWxsPScjZmZiMzQ3Jz48cmVjdCB4PScyMCcgeT0nMjAnIHdpZHRoPSczJyBoZWlnaHQ9JzEuNCcgcng9Jy43Jy8+PHJlY3QgeD0nNDInIHk9JzIxJyB3aWR0aD0nMycgaGVpZ2h0PScxLjQnIHJ4PScuNycvPjwvZz48L3N2Zz4="); }
+.chl-ico-dreidel { --chl-ico: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCA2NCA0OCc+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSdnJyB4MT0nMCcgeTE9JzAnIHgyPScwJyB5Mj0nMSc+PHN0b3Agb2Zmc2V0PScwJyBzdG9wLWNvbG9yPScjZmJlM2ExJy8+PHN0b3Agb2Zmc2V0PScxJyBzdG9wLWNvbG9yPScjYzg5MjJlJy8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PGcgdHJhbnNmb3JtPSdyb3RhdGUoLTE0IDMyIDI0KSc+PHJlY3QgeD0nMzAuNScgeT0nMicgd2lkdGg9JzMnIGhlaWdodD0nOScgcng9JzEuNScgZmlsbD0ndXJsKCNnKScvPjxwYXRoIGQ9J00xOSAxMUg0NVYyOUwzMiA0NkwxOSAyOVonIGZpbGw9J3VybCgjZyknLz48dGV4dCB4PSczMicgeT0nMjgnIGZvbnQtZmFtaWx5PSdHZW9yZ2lhLHNlcmlmJyBmb250LXNpemU9JzE1JyBmb250LXdlaWdodD0nNzAwJyBmaWxsPScjMTMyNjVhJyB0ZXh0LWFuY2hvcj0nbWlkZGxlJz4mIzE1MDQ7PC90ZXh0PjwvZz48L3N2Zz4="); }
+.chl-card-title { font-family: var(--ch-display); font-size: 19px; font-weight: 700; line-height: 1.2; letter-spacing: 1px; text-transform: uppercase; color: var(--ch-ink); }
+.chl-card-text { margin-top: 6px; font-family: var(--ch-body); font-size: 14px; line-height: 1.55; color: var(--ch-muted); }
+.chl-card-link { margin-top: 10px; }
+.chl-card-link p { margin: 0; }
+.chl-card-link a { font-family: var(--ch-body); font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; text-decoration: none !important; color: var(--ch-gold-dk) !important; }
+.chl-card-link a:hover { color: var(--ch-royal) !important; }
+
+/* schedule + sponsor row */
+.chl-split { display: grid; grid-template-columns: 1.65fr 1fr; gap: 20px; margin-top: 24px; }
+.chl-nights-panel {
+    padding: 26px 26px 20px;
+    border-radius: 22px;
+    background: linear-gradient(160deg, var(--ch-navy) 0%, var(--ch-night) 100%);
+    box-shadow: 0 18px 44px rgba(8, 19, 46, 0.2);
+    color: #efe7d2;
+}
+.chl-panel-head { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 6px 16px; margin-bottom: 18px; }
+.chl-panel-head .chl-eyebrow { margin: 0; }
+.chl-h2 { font-family: var(--ch-display); font-size: 28px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; line-height: 1.1; }
+.chl-nights-panel .chl-h2 { color: #fff; }
+.chl-nights { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 8px; }
+.ch-night {
+    position: relative;
+    padding: 12px 4px 10px;
+    text-align: center;
+    border-radius: 12px;
+    border: 1px solid rgba(226, 180, 79, 0.28);
+    background: rgba(255, 255, 255, 0.04);
+    font-family: var(--ch-body);
+}
+.chl-n { font-family: var(--ch-display); font-size: 28px; font-weight: 900; line-height: 1; color: var(--ch-gold-lt); }
+.ch-night-flames { height: 11px; margin: 7px auto 8px; font-size: 0; line-height: 0; background: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCAxMSAxNic+PGRlZnM+PHJhZGlhbEdyYWRpZW50IGlkPSdmJyBjeD0nLjUnIGN5PScuNycgcj0nLjY1Jz48c3RvcCBvZmZzZXQ9JzAnIHN0b3AtY29sb3I9JyNmZmY3ZDAnLz48c3RvcCBvZmZzZXQ9Jy40NScgc3RvcC1jb2xvcj0nI2ZmYzM1YScvPjxzdG9wIG9mZnNldD0nMScgc3RvcC1jb2xvcj0nI2ZmOWEzYycvPjwvcmFkaWFsR3JhZGllbnQ+PC9kZWZzPjxwYXRoIGQ9J001LjUgMTUuNUMxLjUgMTMuNSAyIDggNS41IDFDOSA4IDkuNSAxMy41IDUuNSAxNS41WicgZmlsbD0ndXJsKCNmKScvPjwvc3ZnPg==") left center / 7px 11px repeat-x; filter: drop-shadow(0 0 3px rgba(255, 170, 60, 0.8)); }
+.ch-night.n1 .ch-night-flames { width: 7px; }
+.ch-night.n2 .ch-night-flames { width: 14px; }
+.ch-night.n3 .ch-night-flames { width: 21px; }
+.ch-night.n4 .ch-night-flames { width: 28px; }
+.ch-night.n5 .ch-night-flames { width: 35px; }
+.ch-night.n6 .ch-night-flames { width: 42px; }
+.ch-night.n7 .ch-night-flames { width: 49px; }
+.ch-night.n8 .ch-night-flames { width: 56px; }
+.chl-nd { font-size: 12px; font-weight: 700; color: #fff; white-space: nowrap; }
+.chl-nt { margin-top: 2px; font-size: 10.5px; line-height: 1.3; color: rgba(239, 231, 210, 0.75); }
+.ch-night.is-tonight { border: 2px solid var(--ch-gold); background: rgba(226, 180, 79, 0.16); box-shadow: 0 0 22px rgba(226, 180, 79, 0.35); }
+.ch-night.is-tonight::before { content: "Tonight"; position: absolute; top: -9px; left: 50%; transform: translateX(-50%); padding: 2px 8px; font-size: 9px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--ch-night); background: var(--ch-gold); border-radius: 10px; }
+.chl-note { margin-top: 14px; font-family: var(--ch-body); font-size: 12.5px; color: rgba(239, 231, 210, 0.7); }
+
+.chl-sponsor {
+    position: relative;
+    overflow: hidden;
+    padding: 28px 28px 26px;
+    border-radius: 22px;
+    background: #fff url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCAxMjAgMTAwJz48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9J2cnIHgxPScwJyB5MT0nMCcgeDI9JzAnIHkyPScxJz48c3RvcCBvZmZzZXQ9JzAnIHN0b3AtY29sb3I9JyNmYmUzYTEnLz48c3RvcCBvZmZzZXQ9JzEnIHN0b3AtY29sb3I9JyNjODkyMmUnLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48Zz48Y2lyY2xlIGN4PSc0MicgY3k9JzYyJyByPScyOCcgZmlsbD0nI2E4NzQxYScvPjxjaXJjbGUgY3g9JzQyJyBjeT0nNTknIHI9JzI3JyBmaWxsPSd1cmwoI2cpJy8+PGNpcmNsZSBjeD0nNDInIGN5PSc1OScgcj0nMjAnIGZpbGw9J25vbmUnIHN0cm9rZT0nI2E4NzQxYScgc3Ryb2tlLXdpZHRoPScyJy8+PGNpcmNsZSBjeD0nODAnIGN5PSc2Nicgcj0nMjgnIGZpbGw9JyNhODc0MWEnLz48Y2lyY2xlIGN4PSc4MCcgY3k9JzYzJyByPScyNycgZmlsbD0ndXJsKCNnKScvPjxjaXJjbGUgY3g9JzgwJyBjeT0nNjMnIHI9JzIwJyBmaWxsPSdub25lJyBzdHJva2U9JyNhODc0MWEnIHN0cm9rZS13aWR0aD0nMicvPjxjaXJjbGUgY3g9JzYxJyBjeT0nMzYnIHI9JzI4JyBmaWxsPScjYTg3NDFhJy8+PGNpcmNsZSBjeD0nNjEnIGN5PSczMycgcj0nMjcnIGZpbGw9J3VybCgjZyknLz48Y2lyY2xlIGN4PSc2MScgY3k9JzMzJyByPScyMCcgZmlsbD0nbm9uZScgc3Ryb2tlPScjYTg3NDFhJyBzdHJva2Utd2lkdGg9JzInLz48L2c+PC9zdmc+") right -18px bottom -14px / 150px auto no-repeat;
+    border: 1px solid rgba(226, 180, 79, 0.5);
+    box-shadow: 0 18px 44px rgba(8, 19, 46, 0.1);
+}
+.chl-sponsor .chl-eyebrow { color: var(--ch-gold-dk); margin-bottom: 8px; }
+.chl-sponsor .chl-h2 { color: var(--ch-ink); }
+.chl-sponsor-text { margin: 12px 0 20px; max-width: 300px; font-family: var(--ch-body); font-size: 14.5px; line-height: 1.6; color: var(--ch-muted); }
+.chl-sponsor .chl-btn-gold a { padding: 13px 26px; }
+
+/* ChabadOne events widget, kept compact */
+#co_calendar { display: block; max-width: 1140px; margin: 0 auto 40px; padding: 0 20px; text-align: left; }
+.co_calendar_head { font-family: var(--ch-display) !important; font-size: 22px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--ch-ink); margin: 0 0 12px 10px; text-align: left; }
+#co_calendar .item { float: left; width: 25% !important; padding: 8px; }
+#co_calendar div.co_calendar_body .item { background-color: transparent !important; }
+.co_calendar_text { display: block; padding: 18px; border-radius: 16px; background: #fff; border-left: 4px solid var(--ch-gold); box-shadow: 0 10px 26px rgba(8, 19, 46, 0.1); font-family: var(--ch-body); color: var(--ch-ink); }
+.co_date { display: block; margin-bottom: 6px; font-family: var(--ch-display); font-size: 14px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--ch-gold-dk); }
+.co_title_calendar a { font-family: var(--ch-body); font-size: 15px; font-weight: 700; color: var(--ch-ink) !important; text-decoration: none; text-transform: none; }
+.co_text_calendar { padding-top: 4px; font-size: 13px; line-height: 1.5; color: var(--ch-muted); }
+#co_photo_gallery { display: none; }
+
+/* ChabadOne footer */
+#footerContainer, .footer { background-color: var(--ch-night) !important; color: #e9dfc3; border-top: 3px solid var(--ch-gold); font-family: var(--ch-body); text-align: center; }
+#footerContainer a, .footer a { color: var(--ch-gold-lt); }
+
+@keyframes chFlicker { 0% { transform: scale(1, 1) rotate(-2deg); } 50% { transform: scale(0.94, 1.08) rotate(1deg); } 100% { transform: scale(1.04, 0.95) rotate(-1deg); } }
+@keyframes chGlow { from { opacity: 0.55; } to { opacity: 1; } }
+@keyframes chTwinkle { from { opacity: 0.4; } to { opacity: 0.8; } }
+@media (prefers-reduced-motion: reduce) { .ch-menorah-slot .flame, .ch-menorah-slot .glow, .chl-hero::before { animation: none; } }
+
+/* ================= TABLET ================= */
+@media only screen and (max-width: 960px) {
+    .chabad_header.chl-hero { padding-top: 44px; }
+    .chl-hero-inner { grid-template-columns: 1fr; gap: 18px; text-align: center; }
+    .chl-hero-art { order: -1; }
+    .chl-hero-art::before { width: 300px; }
+    .ch-menorah-slot { max-width: 320px; }
+    .chabad_header .headerTitle.chl-title { text-align: center !important; }
+    .chl-tagline { margin-left: auto; margin-right: auto; }
+    .chl-cd, .chl-actions { justify-content: center; }
+    .chl-eyebrow::before { display: none; }
+    .chl-cards { grid-template-columns: 1fr; gap: 14px; }
+    .chl-split { grid-template-columns: 1fr; }
+    #co_calendar .item { width: 50% !important; }
+}
+
+/* ================= PHONE ================= */
+@media only screen and (max-width: 600px) {
+    .chabad_header.chl-hero { min-height: 0; padding: 36px 16px 130px; }
+    .chl-hero .ch-bh { top: 10px; right: 12px; font-size: 13px; }
+    .chl-hero-art::before { width: 230px; }
+    .ch-menorah-slot { max-width: 240px; }
+    .chl-eyebrow { font-size: 11px; letter-spacing: 3px; }
+    .chl-tagline { font-size: 16px; }
+    .chl-cd { gap: 6px; flex-wrap: wrap; }
+    .chl-cd-label { width: 100%; text-align: center; }
+    .chl-cd > span { width: 62px; }
+    .chl-btn a { padding: 14px 22px; font-size: 13px; }
+    .chl-actions { flex-direction: column; align-items: stretch; }
+    .chl-actions .chl-btn a { display: block; text-align: center; }
+    .chl-main { padding: 0 12px 28px; }
+    .chl-card { padding: 20px 18px 18px 92px; min-height: 0; }
+    .chl-card::before { left: 16px; top: 20px; width: 58px; height: 58px; }
+    .chl-nights-panel { padding: 22px 14px 16px; }
+    .chl-nights { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+    .chl-h2 { font-size: 23px; }
+    .chl-sponsor { background-size: 110px auto; }
+    #co_calendar { padding: 0 12px; }
+    #co_calendar .item { float: none; width: 100% !important; }
+}
