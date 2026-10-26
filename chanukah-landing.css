@@ -1,4 +1,4 @@
-/* Chanukah Landing Page for ChabadOne - v2.0.1
+/* Chanukah Landing Page for ChabadOne - v2.0.2
    One-screen hero + one compact content band. All layout lives inside the
    template's own wrappers (.chl-*), so ChabadOne's section flow can't move it. */
 @import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Montserrat:wght@400;500;600;700&family=Frank+Ruhl+Libre:wght@500&display=swap");
@@ -318,18 +318,23 @@ div#chabad_head .chabad_navigator_bar ul li a, #navigation li.parent a.parent { 
 .co_text_calendar { padding-top: 4px; font-size: 13px; line-height: 1.5; color: var(--ch-muted) !important; }
 #co_photo_gallery { display: none; }
 
-/* ChabadOne footer: stretch it full width (it ships as a fixed 960px box) */
+/* ChabadOne footer: every footer wrapper goes full width AND navy, so the text is always on dark */
 html, body { background-color: var(--ch-cream); }
-#footer, #footerContainer, .footer, .g960.footer, .footer_inner_container, body.mobile .g960.footer {
+div[id*="footer"], div[id*="Footer"], div[class*="footer"]:not(.co_photo_gallery_footer), .g960.footer, body.mobile .g960.footer {
     width: 100% !important;
     max-width: none !important;
     float: none !important;
     margin-left: 0 !important;
     margin-right: 0 !important;
+    left: auto !important;
     box-sizing: border-box;
+    background: var(--ch-night) !important;
+    color: #e9dfc3 !important;
+    text-align: center !important;
 }
-#footerContainer, .footer { padding: 18px 16px !important; background-color: var(--ch-night) !important; color: #e9dfc3; border-top: 3px solid var(--ch-gold); font-family: var(--ch-body); font-size: 13px; text-align: center; }
-#footerContainer a, .footer a { color: var(--ch-gold-lt); }
+#footerContainer, .footer, .g960.footer { padding: 18px 16px !important; border-top: 3px solid var(--ch-gold); font-family: var(--ch-body); font-size: 13px; }
+div[id*="footer"] a, div[class*="footer"] a, .footer a { color: var(--ch-gold-lt) !important; }
+div[id*="footer"] b, div[id*="footer"] strong, .footer b, .footer strong { color: #fff !important; }
 
 @keyframes chFlicker { 0% { transform: scale(1, 1) rotate(-2deg); } 50% { transform: scale(0.94, 1.08) rotate(1deg); } 100% { transform: scale(1.04, 0.95) rotate(-1deg); } }
 @keyframes chGlow { from { opacity: 0.55; } to { opacity: 1; } }
