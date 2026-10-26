@@ -1,4 +1,4 @@
-/* Chanukah Landing Page for ChabadOne - v2.0.2
+/* Chanukah Landing Page for ChabadOne - v2.0.3
    One-screen hero + one compact content band. All layout lives inside the
    template's own wrappers (.chl-*), so ChabadOne's section flow can't move it. */
 @import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Montserrat:wght@400;500;600;700&family=Frank+Ruhl+Libre:wght@500&display=swap");
@@ -26,6 +26,22 @@ div.chabad_left_column { width: 100% !important; float: none !important; margin:
 .chl, .chl * { box-sizing: border-box; }
 
 /* ================= HERO ================= */
+/* Center name sits in ChabadOne's own .headerSubTitle slot (keeps it editable); restyle it as the eyebrow */
+.chabad_header .headerSubTitle.chl-eyebrow {
+    position: relative;
+    z-index: 2;
+    display: block;
+    margin: 0 0 14px;
+    padding: 0;
+    font-family: var(--ch-body) !important;
+    font-size: 13px !important;
+    font-weight: 700;
+    line-height: 1.4;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    text-align: left;
+    color: var(--ch-gold) !important;
+}
 .chabad_header.chl-hero {
     position: relative;
     overflow: hidden;
@@ -352,6 +368,7 @@ div[id*="footer"] b, div[id*="footer"] strong, .footer b, .footer strong { color
     .chl-tagline { margin-left: auto; margin-right: auto; }
     .chl-cd, .chl-actions { justify-content: center; }
     .chl-eyebrow::before { display: none; }
+    .chabad_header .headerSubTitle.chl-eyebrow { text-align: center; }
     .chl-cards { grid-template-columns: 1fr; gap: 14px; }
     .chl-split { grid-template-columns: 1fr; }
     #co_calendar .item, #co_calendar div.co_calendar_body .item { max-width: calc(50% - 8px); }
@@ -363,7 +380,7 @@ div[id*="footer"] b, div[id*="footer"] strong, .footer b, .footer strong { color
     .chl-hero .ch-bh { top: 10px; right: 12px; font-size: 13px; }
     .chl-hero-art::before { width: 230px; }
     .ch-menorah-slot { max-width: 240px; }
-    .chl-eyebrow { font-size: 11px; letter-spacing: 3px; }
+    .chl-eyebrow, .chabad_header .headerSubTitle.chl-eyebrow { font-size: 11px !important; letter-spacing: 3px; }
     .chl-tagline { font-size: 16px; }
     .chl-cd { gap: 6px; flex-wrap: wrap; }
     .chl-cd-label { width: 100%; text-align: center; }
