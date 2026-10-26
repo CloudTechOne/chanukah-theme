@@ -1,7 +1,7 @@
-/* Chanukah Landing Page for ChabadOne - v2.0.6
+/* Chanukah Landing Page for ChabadOne - v2.1.0
    One-screen hero + one compact content band. All layout lives inside the
    template's own wrappers (.chl-*), so ChabadOne's section flow can't move it. */
-@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Montserrat:wght@400;500;600;700&family=Frank+Ruhl+Libre:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Montserrat:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,500&family=Frank+Ruhl+Libre:wght@500&display=swap");
 
 :root {
     --ch-night: #08132e;
@@ -15,6 +15,7 @@
     --ch-muted: #4d5677;
     --ch-display: Cinzel, Georgia, "Times New Roman", serif;
     --ch-body: Montserrat, Arial, sans-serif;
+    --ch-serif: "Playfair Display", Georgia, "Times New Roman", serif;
 }
 
 /* ---------- Neutralize ChabadOne's default minisite layout ---------- */
@@ -127,7 +128,7 @@ div.chabad_left_column { width: 100% !important; float: none !important; margin:
     border-radius: 40px;
     background: rgba(8, 19, 46, 0.5);
 }
-.chl-countdown-slot { min-height: 0; font-size: 0; line-height: 0; margin: 22px 0 0; }
+.chl-countdown-slot { min-height: 0; font-size: 0; line-height: 0; }
 .chl-countdown-slot.ready { font-size: 14px; line-height: 1.2; }
 .chl-cd { display: flex; align-items: center; gap: 10px; font-family: var(--ch-body); }
 .chl-cd-label { width: 92px; font-size: 11px; font-weight: 700; letter-spacing: 2px; line-height: 1.4; text-transform: uppercase; color: var(--ch-gold); }
@@ -479,4 +480,96 @@ html, body { background-color: var(--ch-cream); }
     .chl-close-name { font-size: 22px; }
     .chl-close-cta .chl-btn a { min-width: 0; }
     #co_calendar .item, #co_calendar div.co_calendar_body .item, #co_calendar div.co_calendar_body .item.item.first { max-width: 100%; flex-basis: 100%; }
+}
+
+/* =====================================================================
+   v2.1 - Hero "Tonight" card, city line, typography
+   ===================================================================== */
+.chl-hero-art { flex-direction: column; }
+.chl-hero-art .ch-menorah-slot { max-width: 400px; }
+.chl-hero-art .chl-countdown-slot.ready {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 380px;
+    margin-top: 6px;
+    font-size: 14px;
+    line-height: 1.3;
+}
+.chl-tn {
+    padding: 18px 20px 16px;
+    text-align: center;
+    border-radius: 20px;
+    border: 1px solid rgba(226, 180, 79, 0.45);
+    background: linear-gradient(160deg, rgba(31, 63, 143, 0.55) 0%, rgba(8, 19, 46, 0.78) 100%);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 20px 44px rgba(3, 8, 24, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    font-family: var(--ch-body);
+    color: #efe7d2;
+}
+.chl-tn-label { font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--ch-gold); margin-bottom: 10px; }
+.chl-tn .chl-cd { justify-content: center; gap: 8px; }
+.chl-tn .chl-cd > span { width: 64px; padding: 8px 0 6px; border-radius: 12px; }
+.chl-tn .chl-cd b { font-size: 25px; }
+.chl-tn-foot { margin-top: 12px; padding-top: 10px; border-top: 1px solid rgba(226, 180, 79, 0.22); font-size: 13.5px; color: #efe7d2; }
+.chl-tn-foot b { color: #fff; font-weight: 700; }
+.chl-tn-city { margin-top: 3px; font-size: 11.5px; letter-spacing: 1px; color: rgba(239, 231, 210, 0.6); }
+.chl-tn-flames { display: flex; justify-content: center; gap: 6px; height: 26px; margin: 2px 0 8px; }
+.chl-tn-flames i {
+    width: 11px; height: 24px; display: block;
+    border-radius: 50% 50% 45% 45% / 65% 65% 35% 35%;
+    background: radial-gradient(circle at 50% 72%, #fff7d0 0%, #ffc35a 45%, #ff8a2a 100%);
+    box-shadow: 0 0 12px rgba(255, 170, 60, 0.85);
+    transform-origin: 50% 100%;
+    animation: chFlicker 1.3s ease-in-out infinite alternate;
+}
+.chl-tn-flames i:nth-child(2n) { animation-duration: 1.05s; animation-delay: -0.3s; }
+.chl-tn-flames i:nth-child(3n) { animation-duration: 1.6s; animation-delay: -0.7s; }
+.chl-tn-big { font-family: var(--ch-serif); font-size: 26px; font-weight: 700; line-height: 1.2; color: #fff; }
+
+/* City line under the schedule title */
+.chl-city { margin: -8px 0 16px; font-family: var(--ch-body); font-size: 13px; color: rgba(239, 231, 210, 0.75); }
+
+/* Typography: Cinzel stays on the big title only; titles elsewhere get a warmer serif in normal case */
+.chl-card-title,
+.chl-h2,
+.chl-close-name,
+#co_calendar .co_calendar_head,
+.co_calendar_head {
+    font-family: var(--ch-serif) !important;
+    text-transform: none !important;
+    letter-spacing: 0 !important;
+}
+.chl-card-title { font-size: 21px; font-weight: 700; line-height: 1.25; }
+.chl-h2 { font-size: 30px; font-weight: 700; }
+.chl-close-name { font-size: 28px; font-weight: 700; }
+#co_calendar .co_calendar_head { font-size: 28px !important; font-weight: 700; }
+.chl-n { font-family: var(--ch-serif); font-weight: 700; }
+#co_calendar .co_date, .co_date { font-family: var(--ch-body) !important; font-size: 12px !important; letter-spacing: 2px !important; }
+
+@media only screen and (max-width: 960px) {
+    .chl-hero-art .chl-countdown-slot.ready { margin-top: 4px; }
+}
+@media only screen and (max-width: 760px) {
+    .chl-hero-art .ch-menorah-slot { max-width: 230px; }
+    .chl-hero-art .chl-countdown-slot.ready { max-width: 340px; margin: 4px auto 0; }
+    .chl-tn .chl-cd > span { width: 60px; }
+    .chl-tn-big { font-size: 23px; }
+    .chl-h2 { font-size: 26px; }
+    .chl-card-title { font-size: 20px; }
+    #co_calendar .co_calendar_head { font-size: 25px !important; }
+}
+/* Phone + tablet order: menorah > name > title > tagline > dates > tonight card > buttons */
+@media only screen and (max-width: 960px) {
+    .chl-hero-inner { display: flex !important; flex-direction: column; align-items: center; gap: 0; text-align: center; }
+    .chl-hero-text, .chl-hero-art { display: contents; }
+    .chl-hero-art::before { display: none; }
+    .ch-menorah-slot { order: 1; margin: 0 auto 18px; }
+    .chabad_header .headerSubTitle.chl-eyebrow { order: 2; text-align: center; margin-bottom: 10px; }
+    .chabad_header .headerTitle.chl-title { order: 3; text-align: center !important; margin-bottom: 12px; }
+    .chl-tagline { order: 4; margin: 0 auto 16px; }
+    .chabad_header .header-desc.chl-date { order: 5; }
+    .chl-hero-art .chl-countdown-slot.ready { order: 6; width: 100%; max-width: 360px; margin: 20px auto 0; }
+    .chl-actions { order: 7; width: 100%; }
 }
