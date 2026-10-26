@@ -1,4 +1,4 @@
-/* Chanukah Landing Page for ChabadOne - v2.0.0
+/* Chanukah Landing Page for ChabadOne - v2.0.1
    One-screen hero + one compact content band. All layout lives inside the
    template's own wrappers (.chl-*), so ChabadOne's section flow can't move it. */
 @import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Montserrat:wght@400;500;600;700&family=Frank+Ruhl+Libre:wght@500&display=swap");
@@ -272,19 +272,63 @@ div#chabad_head .chabad_navigator_bar ul li a, #navigation li.parent a.parent { 
 .chl-sponsor-text { margin: 12px 0 20px; max-width: 300px; font-family: var(--ch-body); font-size: 14.5px; line-height: 1.6; color: var(--ch-muted); }
 .chl-sponsor .chl-btn-gold a { padding: 13px 26px; }
 
-/* ChabadOne events widget, kept compact */
-#co_calendar { display: block; max-width: 1140px; margin: 0 auto 40px; padding: 0 20px; text-align: left; }
-.co_calendar_head { font-family: var(--ch-display) !important; font-size: 22px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--ch-ink); margin: 0 0 12px 10px; text-align: left; }
-#co_calendar .item { float: left; width: 25% !important; padding: 8px; }
-#co_calendar div.co_calendar_body .item { background-color: transparent !important; }
-.co_calendar_text { display: block; padding: 18px; border-radius: 16px; background: #fff; border-left: 4px solid var(--ch-gold); box-shadow: 0 10px 26px rgba(8, 19, 46, 0.1); font-family: var(--ch-body); color: var(--ch-ink); }
-.co_date { display: block; margin-bottom: 6px; font-family: var(--ch-display); font-size: 14px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--ch-gold-dk); }
-.co_title_calendar a { font-family: var(--ch-body); font-size: 15px; font-weight: 700; color: var(--ch-ink) !important; text-decoration: none; text-transform: none; }
-.co_text_calendar { padding-top: 4px; font-size: 13px; line-height: 1.5; color: var(--ch-muted); }
+/* ChabadOne events widget.
+   Real markup: #co_calendar > .co_calendar_body > .co_calendar_text (the ROW) > .item (each event) */
+#co_calendar { display: block; max-width: 1140px; margin: 0 auto 40px; padding: 0 20px; text-align: left; float: none; }
+.co_calendar_head { font-family: var(--ch-display) !important; font-size: 22px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--ch-ink); margin: 0 0 12px 8px; text-align: left; }
+#co_calendar .co_calendar_body, #co_calendar .co_calendar_text {
+    display: flex !important;
+    flex-wrap: wrap;
+    align-items: stretch;
+    gap: 16px;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: none !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+#co_calendar .co_calendar_body > div:not(.co_calendar_text):not(.item) { display: contents; }
+#co_calendar .item,
+#co_calendar div.co_calendar_body .item,
+#co_calendar div.co_calendar_body .item.item.first {
+    float: none !important;
+    flex: 1 1 230px;
+    width: auto !important;
+    max-width: calc(50% - 8px);
+    min-height: 0 !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 18px 20px !important;
+    background: #fff !important;
+    background-clip: border-box !important;
+    border-left: 4px solid var(--ch-gold);
+    border-radius: 16px;
+    box-shadow: 0 10px 26px rgba(8, 19, 46, 0.1);
+    font-family: var(--ch-body);
+    color: var(--ch-ink);
+    text-align: left;
+}
+#co_calendar .item * { float: none !important; }
+#co_calendar .item::after { content: ""; display: block; clear: both; }
+.co_date { display: block; margin-bottom: 6px; font-family: var(--ch-display); font-size: 14px; font-weight: 700; letter-spacing: 1px; line-height: 1.3; text-transform: uppercase; color: var(--ch-gold-dk) !important; }
+.co_title_calendar a { font-family: var(--ch-body); font-size: 15px; font-weight: 700; line-height: 1.35; color: var(--ch-ink) !important; text-decoration: none; text-transform: none; }
+.co_title_calendar a:hover { color: var(--ch-royal) !important; }
+.co_text_calendar { padding-top: 4px; font-size: 13px; line-height: 1.5; color: var(--ch-muted) !important; }
 #co_photo_gallery { display: none; }
 
-/* ChabadOne footer */
-#footerContainer, .footer { background-color: var(--ch-night) !important; color: #e9dfc3; border-top: 3px solid var(--ch-gold); font-family: var(--ch-body); text-align: center; }
+/* ChabadOne footer: stretch it full width (it ships as a fixed 960px box) */
+html, body { background-color: var(--ch-cream); }
+#footer, #footerContainer, .footer, .g960.footer, .footer_inner_container, body.mobile .g960.footer {
+    width: 100% !important;
+    max-width: none !important;
+    float: none !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    box-sizing: border-box;
+}
+#footerContainer, .footer { padding: 18px 16px !important; background-color: var(--ch-night) !important; color: #e9dfc3; border-top: 3px solid var(--ch-gold); font-family: var(--ch-body); font-size: 13px; text-align: center; }
 #footerContainer a, .footer a { color: var(--ch-gold-lt); }
 
 @keyframes chFlicker { 0% { transform: scale(1, 1) rotate(-2deg); } 50% { transform: scale(0.94, 1.08) rotate(1deg); } 100% { transform: scale(1.04, 0.95) rotate(-1deg); } }
@@ -305,7 +349,7 @@ div#chabad_head .chabad_navigator_bar ul li a, #navigation li.parent a.parent { 
     .chl-eyebrow::before { display: none; }
     .chl-cards { grid-template-columns: 1fr; gap: 14px; }
     .chl-split { grid-template-columns: 1fr; }
-    #co_calendar .item { width: 50% !important; }
+    #co_calendar .item, #co_calendar div.co_calendar_body .item { max-width: calc(50% - 8px); }
 }
 
 /* ================= PHONE ================= */
@@ -330,5 +374,5 @@ div#chabad_head .chabad_navigator_bar ul li a, #navigation li.parent a.parent { 
     .chl-h2 { font-size: 23px; }
     .chl-sponsor { background-size: 110px auto; }
     #co_calendar { padding: 0 12px; }
-    #co_calendar .item { float: none; width: 100% !important; }
+    #co_calendar .item, #co_calendar div.co_calendar_body .item, #co_calendar div.co_calendar_body .item.item.first { max-width: 100%; flex-basis: 100%; }
 }
