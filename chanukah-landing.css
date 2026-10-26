@@ -1,4 +1,4 @@
-/* Chanukah Landing Page for ChabadOne - v2.0.5
+/* Chanukah Landing Page for ChabadOne - v2.0.6
    One-screen hero + one compact content band. All layout lives inside the
    template's own wrappers (.chl-*), so ChabadOne's section flow can't move it. */
 @import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Montserrat:wght@400;500;600;700&family=Frank+Ruhl+Libre:wght@500&display=swap");
@@ -431,6 +431,25 @@ html, body { background-color: var(--ch-cream); }
     .chl-close-contact { padding-left: 0; padding-top: 20px; border-left: 0; border-top: 1px solid rgba(226, 180, 79, 0.3); justify-items: center; }
     .chl-close-cta { flex-direction: row; flex-wrap: wrap; justify-content: center; }
     #co_calendar .item, #co_calendar div.co_calendar_body .item { max-width: calc(50% - 8px); }
+}
+
+
+/* ---------- Phone hardening (v2.0.6) ----------
+   ChabadOne's mobile stylesheet strips the header's padding, so on phones the spacing
+   now lives on our own inner wrapper, and the cards no longer overlap the hero. */
+@media only screen and (max-width: 760px) {
+    .chabad_header.chl-hero { padding: 0 !important; min-height: 0 !important; height: auto !important; }
+    .chl-hero::after { height: 0; display: none; }
+    .chl-hero-inner { padding: 34px 20px 44px !important; gap: 16px; }
+    .chl-hero .ch-bh { top: 10px; right: 14px; }
+    .chl-hero-art::before { width: 230px; }
+    .ch-menorah-slot { max-width: 240px; }
+    .chl-actions { flex-direction: column; align-items: stretch; gap: 12px; margin-top: 24px; }
+    .chl-actions .chl-btn a { display: block; width: 100%; padding: 15px 18px; text-align: center; box-sizing: border-box; }
+    .chl-btn-ghost a { background: rgba(8, 19, 46, 0.35); }
+    .chl-main { margin-top: 0 !important; padding: 22px 14px 26px !important; }
+    .chl-cards { gap: 14px; }
+    .clearfix.bh.mobile-only { display: none !important; }
 }
 
 /* ================= PHONE ================= */
