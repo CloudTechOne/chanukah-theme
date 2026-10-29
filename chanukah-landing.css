@@ -1,4 +1,4 @@
-/* Chanukah Landing Page for ChabadOne - v2.1.0
+/* Chanukah Landing Page for ChabadOne - v2.1.2
    One-screen hero + one compact content band. All layout lives inside the
    template's own wrappers (.chl-*), so ChabadOne's section flow can't move it. */
 @import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Montserrat:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,500&family=Frank+Ruhl+Libre:wght@500&display=swap");
@@ -572,4 +572,70 @@ html, body { background-color: var(--ch-cream); }
     .chabad_header .header-desc.chl-date { order: 5; }
     .chl-hero-art .chl-countdown-slot.ready { order: 6; width: 100%; max-width: 360px; margin: 20px auto 0; }
     .chl-actions { order: 7; width: 100%; }
+}
+
+/* =====================================================================
+   v2.1.2 - Subpages (any minisite page that is not the landing page)
+   The landing page body has .section_root; subpages don't.
+   ===================================================================== */
+/* Compact hero: no empty overlap space, no fade */
+body:not(.section_root) .chabad_header.chl-hero {
+    min-height: 0 !important;
+    height: auto !important;
+    padding: 40px 24px 48px !important;
+}
+body:not(.section_root) .chl-hero::after { display: none !important; }
+body:not(.section_root) .chl-hero-inner { padding-bottom: 0 !important; }
+
+/* Hide ChabadOne's page title on subpages */
+body:not(.section_root) .master-content-wrapper .article-header,
+body:not(.section_root) .article-header__title { display: none !important; }
+
+/* Center the page content in a readable column */
+body:not(.section_root) #co_body_container,
+body:not(.section_root) .master-content-wrapper,
+body:not(.section_root) .co_body {
+    float: none !important;
+    width: 100% !important;
+    max-width: 860px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    box-sizing: border-box;
+    text-align: center;
+}
+body:not(.section_root) #co_body_container { padding-top: 36px !important; padding-bottom: 40px !important; }
+body:not(.section_root) #co_body_container img { max-width: 100% !important; height: auto !important; }
+
+/* Center ChabadOne registration / donation forms */
+body:not(.section_root) #RegisterSinglePage,
+body:not(.section_root) .form-all,
+body:not(.section_root) #co_body_container form,
+body:not(.section_root) #co_body_container table {
+    float: none !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: left;
+}
+body:not(.section_root) #RegisterSinglePage,
+body:not(.section_root) #co_body_container form {
+    width: 100% !important;
+    max-width: 700px !important;
+    margin-top: 28px !important;
+    padding: 26px 24px !important;
+    box-sizing: border-box;
+    background: #fff;
+    border-radius: 20px;
+    border-top: 3px solid var(--ch-gold);
+    box-shadow: 0 18px 44px rgba(8, 19, 46, 0.1);
+}
+body:not(.section_root) #RegisterSinglePage form { margin: 0 !important; padding: 0 !important; background: none; border: 0; box-shadow: none; max-width: none !important; }
+
+@media only screen and (max-width: 760px) {
+    body:not(.section_root) .chabad_header.chl-hero { padding: 0 !important; }
+    body:not(.section_root) .chl-hero-inner { padding: 30px 20px 36px !important; }
+    body:not(.section_root) #co_body_container { padding-top: 24px !important; }
+    body:not(.section_root) #RegisterSinglePage,
+    body:not(.section_root) #co_body_container form { padding: 18px 14px !important; }
 }

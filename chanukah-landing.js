@@ -1,4 +1,4 @@
-/* Chanukah Landing Page for ChabadOne - v2.1.1
+/* Chanukah Landing Page for ChabadOne - v2.1.2
    - Before Chanukah the menorah is fully lit; over the last 8 days one candle
      burns down per day, so only the shamash remains when Chanukah begins.
    - During Chanukah the candles light again, night by night.
@@ -70,7 +70,7 @@
                 '<div class="chl-tn-label">Until the first candle</div>' +
                 '<div class="chl-cd"><span><b class="cd-d">00</b><i>Days</i></span><span><b class="cd-h">00</b><i>Hours</i></span>' +
                 '<span><b class="cd-m">00</b><i>Min</i></span><span><b class="cd-s">00</b><i>Sec</i></span></div>' +
-                '<div class="chl-tn-foot"><b>Night 1</b> &#183; ' + esc(first.date) + (first.time ? " &#183; " + esc(first.time) : "") + "</div>" + cityLine + "</div>";
+                (first.date || first.time ? '<div class="chl-tn-foot"><b>Night 1</b>' + (first.date ? " &#183; " + esc(first.date) : "") + (first.time ? " &#183; " + esc(first.time) : "") + "</div>" : "") + cityLine + "</div>";
             u = { d: box.querySelector(".cd-d"), h: box.querySelector(".cd-h"), m: box.querySelector(".cd-m"), s: box.querySelector(".cd-s") };
         }
         function renderNight(n) {
@@ -79,7 +79,7 @@
                 '<div class="chl-tn-label">Tonight &#183; Night ' + n + " of 8</div>" +
                 flames(n) +
                 '<div class="chl-tn-big">Light ' + n + " candle" + (n > 1 ? "s" : "") + "</div>" +
-                '<div class="chl-tn-foot">' + esc(info.date) + (info.time ? " &#183; <b>" + esc(info.time) + "</b>" : "") + "</div>" + cityLine + "</div>";
+                (info.date || info.time ? '<div class="chl-tn-foot">' + esc(info.date) + (info.date && info.time ? " &#183; " : "") + (info.time ? "<b>" + esc(info.time) + "</b>" : "") + "</div>" : "") + cityLine + "</div>";
         }
         function tick() {
             var t = now(), diff = start - t;
