@@ -1,5 +1,7 @@
-/* Chanukah Landing Page for ChabadOne - v2.1.0
-   - Lights the hero menorah night by night.
+/* Chanukah Landing Page for ChabadOne - v2.1.1
+   - Before Chanukah the menorah is fully lit; over the last 8 days one candle
+     burns down per day, so only the shamash remains when Chanukah begins.
+   - During Chanukah the candles light again, night by night.
    - Hero card: countdown before Chanukah; during Chanukah shows tonight's night,
      candle count, and the time + date typed into that night's box in the schedule,
      plus the city from the schedule's editable City field.
@@ -35,10 +37,23 @@
             return { date: txt(el && el.querySelector(".chl-nd")), time: txt(el && el.querySelector(".chl-nt")) };
         }
         function flames(n) { var s = ""; for (var i = 0; i < n; i++) { s += "<i></i>"; } return '<div class="chl-tn-flames">' + s + "</div>"; }
-        function light(n) {
+        /* n = candles fully lit; fade (0-1) = brightness of candle n+1, which is going out */
+        function light(n, fade) {
             for (var i = 0; i < lights.length; i++) {
-                if (+lights[i].getAttribute("data-n") > n) { lights[i].classList.add("out"); } else { lights[i].classList.remove("out"); }
+                var k = +lights[i].getAttribute("data-n");
+                if (k <= n) { lights[i].classList.remove("out"); lights[i].style.opacity = ""; }
+                else if (k === n + 1 && fade > 0) { lights[i].classList.remove("out"); lights[i].style.opacity = (0.15 + 0.85 * fade).toFixed(2); }
+                else { lights[i].classList.add("out"); lights[i].style.opacity = ""; }
             }
+        }
+        /* Before Chanukah: full menorah until the last 8 days, then one candle burns down each day.
+           The leftmost (newest) candle goes out first, so night 1's candle is the last one standing. */
+        var DIM_DAYS = 8;
+        function preLight(msLeft) {
+            var days = msLeft / 86400000;
+            if (days >= DIM_DAYS) { light(8, 0); return; }
+            var whole = Math.floor(days);
+            light(whole, days - whole);
         }
         function tonight(n) {
             for (var i = 0; i < nights.length; i++) {
@@ -75,7 +90,7 @@
                 u.h.innerHTML = pad(Math.floor(s % 86400 / 3600));
                 u.m.innerHTML = pad(Math.floor(s % 3600 / 60));
                 u.s.innerHTML = pad(s % 60);
-                light(0); tonight(0);
+                preLight(diff); tonight(0);
                 return;
             }
             var night = Math.floor((t - start) / 86400000) + 1;
