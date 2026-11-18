@@ -1,0 +1,131 @@
+/* Chanukah Landing - OKC Chanukah Festival skin - v1.0.0
+   Loads AFTER chanukah-landing.css. Only affects pages whose #chabad_body_page has class "chl-okc".
+   Palette and type match the OKC Community Chanukah Festival flyer. */
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Kaushan+Script&display=swap");
+
+.chl-okc {
+    --ch-night: #17171b;
+    --ch-navy: #222228;
+    --ch-royal: #2c2c33;
+    --ch-gold: #fcc63d;
+    --ch-gold-lt: #ffd866;
+    --ch-gold-dk: #c8941c;
+    --ch-cream: #f6f3ec;
+    --ch-ink: #17171b;
+    --ch-muted: #55555e;
+    --okc-coral: #f05d5e;
+    --okc-teal: #6cc4a1;
+    --okc-yellow: #fcc63d;
+    --ch-display: Oswald, "Arial Narrow", Arial, sans-serif;
+    --ch-serif: Oswald, "Arial Narrow", Arial, sans-serif;
+}
+
+/* ---------- Hero ---------- */
+.chl-okc .chabad_header.chl-hero {
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'%3E%3Cg fill='none' stroke='%23000' stroke-width='9' stroke-linejoin='miter' opacity='.55'%3E%3Cpath d='M75 20L120 98H30Z M75 124L30 46H120Z'/%3E%3Cpath d='M230 120L285 215H175Z M230 247L175 152H285Z'/%3E%3Cpath d='M60 200L95 261H25Z M60 282L25 221H95Z'/%3E%3Cpath d='M215 -20L250 41H180Z M215 62L180 1H250Z'/%3E%3C/g%3E%3C/svg%3E") 0 0 / 300px 300px repeat, radial-gradient(circle at 74% 42%, rgba(252, 198, 61, 0.14) 0%, rgba(252, 198, 61, 0) 38%), #1b1b20 !important;
+}
+.chl-okc .chl-hero::before { display: none; }
+.chl-okc .chl-hero::after { background: linear-gradient(180deg, rgba(246, 243, 236, 0) 0%, var(--ch-cream) 100%); }
+.chl-okc .chabad_header .headerSubTitle.chl-eyebrow {
+    font-family: Oswald, Arial, sans-serif !important;
+    font-weight: 600;
+    font-size: 26px !important;
+    letter-spacing: 1px;
+    color: var(--okc-teal) !important;
+    margin-bottom: 4px;
+}
+.chl-okc .chl-eyebrow::before { display: none; }
+.chl-okc .chabad_header .headerTitle.chl-title {
+    font-family: Oswald, "Arial Narrow", sans-serif !important;
+    font-weight: 700;
+    font-size: clamp(54px, 7vw, 96px);
+    letter-spacing: 0.32em;
+    line-height: 1;
+    color: var(--okc-coral);
+    background: none;
+    -webkit-text-fill-color: var(--okc-coral);
+    filter: none;
+    margin-bottom: 0;
+}
+.chl-okc .chl-script {
+    display: block;
+    margin: -6px 0 6px -4px;
+    font-family: "Kaushan Script", "Brush Script MT", cursive;
+    font-weight: 400;
+    font-size: 1.45em;
+    letter-spacing: 0;
+    text-transform: none;
+    line-height: 1.05;
+    color: #fff;
+    -webkit-text-fill-color: #fff;
+    transform: rotate(-4deg);
+    transform-origin: left center;
+}
+.chl-okc .chl-tagline { color: #e8e6e1; }
+.chl-okc .chabad_header .header-desc.chl-date {
+    font-family: Oswald, Arial, sans-serif;
+    font-weight: 600;
+    font-size: 22px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--okc-yellow);
+    background: none;
+    border: 0;
+    padding: 0;
+}
+
+/* Menorah recolor: teal branches, yellow flames (flyer style) */
+.chl-okc .ch-menorah-slot svg [stroke="url(#chGold)"] { stroke: var(--okc-teal); }
+.chl-okc .ch-menorah-slot svg [fill="url(#chGold)"] { fill: var(--okc-teal); }
+.chl-okc .ch-menorah-slot svg [fill="#fbf3e0"] { fill: #f3f1ea; }
+.chl-okc .ch-menorah-slot { filter: drop-shadow(0 0 22px rgba(252, 198, 61, 0.25)); }
+.chl-okc .chl-hero-art::before { border-color: rgba(108, 196, 161, 0.35); box-shadow: 0 0 0 18px rgba(108, 196, 161, 0.05), 0 0 0 40px rgba(108, 196, 161, 0.03); background: radial-gradient(circle, rgba(252, 198, 61, 0.12) 0%, rgba(252, 198, 61, 0) 65%); }
+
+/* Countdown card */
+.chl-okc .chl-tn { background: rgba(23, 23, 27, 0.88); border-color: rgba(108, 196, 161, 0.55); }
+.chl-okc .chl-tn-label { color: var(--okc-teal); }
+.chl-okc .chl-cd > span, .chl-okc .chl-tn .chl-cd > span { border-color: rgba(252, 198, 61, 0.55); }
+.chl-okc .chl-cd b { font-family: Oswald, Arial, sans-serif; color: var(--okc-yellow); }
+.chl-okc .chl-tn-big { font-family: Oswald, Arial, sans-serif; letter-spacing: 1px; }
+
+/* Buttons */
+.chl-okc .chl-btn-gold a { color: #17171b !important; background: var(--okc-yellow); box-shadow: 0 10px 24px rgba(252, 198, 61, 0.35); font-family: Oswald, Arial, sans-serif; font-size: 16px; letter-spacing: 1.5px; }
+.chl-okc .chl-btn-ghost a { color: #fff !important; border-color: var(--okc-teal); font-family: Oswald, Arial, sans-serif; font-size: 16px; letter-spacing: 1.5px; }
+.chl-okc .chl-btn-ghost a:hover { background: rgba(108, 196, 161, 0.15); }
+
+/* ---------- Content ---------- */
+.chl-okc div.chabad_left_column { background: var(--ch-cream) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260' viewBox='0 0 260 260'%3E%3Cg transform='translate(42 40) rotate(-8) scale(1)' stroke='%232f9c80' stroke-opacity='.22' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' fill='none'%3E%3Cpath d='M0 14V-8M-7 15h14M0 10L-15 -4M0 7L-10 -4M0 4L-5 -4M0 10L15 -4M0 7L10 -4M0 4L5 -4'/%3E%3Cpath d='M-15 -6v-3M-10 -6v-3M-5 -6v-3M5 -6v-3M10 -6v-3M15 -6v-3M0 -10v-3'/%3E%3C/g%3E%3Cg transform='translate(170 34) rotate(12) scale(1)' stroke='%232f9c80' stroke-opacity='.22' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' fill='none'%3E%3Cpath d='M-3 -14h6v6h-6z'/%3E%3Cpath d='M-9 -8h18v12L0 16L-9 4z'/%3E%3Cpath d='M-3 -3h5v2.5c0 2-1 3-3 3'/%3E%3C/g%3E%3Cg transform='translate(108 108) rotate(-6) scale(1)' stroke='%232f9c80' stroke-opacity='.22' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' fill='none'%3E%3Cellipse cx='0' cy='2' rx='12' ry='9'/%3E%3Cpath d='M-10 -1c3-3 6 0 9-2s5 1 7-1 3 1 4 2'/%3E%3Ccircle cx='0' cy='-3' r='2'/%3E%3Cpath d='M-5 4l1 .5M4 5l1-.5M-1 7h1'/%3E%3C/g%3E%3Cg transform='translate(225 120) rotate(8) scale(1)' stroke='%232f9c80' stroke-opacity='.22' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' fill='none'%3E%3Ccircle cx='-4' cy='2' r='9'/%3E%3Ccircle cx='-4' cy='2' r='6'/%3E%3Ccircle cx='6' cy='-3' r='9'/%3E%3Ccircle cx='6' cy='-3' r='6'/%3E%3C/g%3E%3Cg transform='translate(38 170) rotate(6) scale(1)' stroke='%232f9c80' stroke-opacity='.22' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' fill='none'%3E%3Cellipse cx='0' cy='5' rx='13' ry='4'/%3E%3Cellipse cx='0' cy='-1' rx='11.5' ry='3.6'/%3E%3Cellipse cx='0' cy='-7' rx='10' ry='3.2'/%3E%3Cpath d='M-3 -9.5c2-1.5 5-1.5 7 0'/%3E%3C/g%3E%3Cg transform='translate(150 200) rotate(-10) scale(0.9)' stroke='%232f9c80' stroke-opacity='.22' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' fill='none'%3E%3Cpath d='M0 14V-8M-7 15h14M0 10L-15 -4M0 7L-10 -4M0 4L-5 -4M0 10L15 -4M0 7L10 -4M0 4L5 -4'/%3E%3Cpath d='M-15 -6v-3M-10 -6v-3M-5 -6v-3M5 -6v-3M10 -6v-3M15 -6v-3M0 -10v-3'/%3E%3C/g%3E%3Cg transform='translate(232 230) rotate(-14) scale(0.9)' stroke='%232f9c80' stroke-opacity='.22' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' fill='none'%3E%3Cpath d='M-3 -14h6v6h-6z'/%3E%3Cpath d='M-9 -8h18v12L0 16L-9 4z'/%3E%3Cpath d='M-3 -3h5v2.5c0 2-1 3-3 3'/%3E%3C/g%3E%3Cg transform='translate(95 236) rotate(10) scale(0.85)' stroke='%232f9c80' stroke-opacity='.22' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' fill='none'%3E%3Ccircle cx='-4' cy='2' r='9'/%3E%3Ccircle cx='-4' cy='2' r='6'/%3E%3Ccircle cx='6' cy='-3' r='9'/%3E%3Ccircle cx='6' cy='-3' r='6'/%3E%3C/g%3E%3Cg transform='translate(205 70) rotate(-4) scale(0.8)' stroke='%232f9c80' stroke-opacity='.22' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' fill='none'%3E%3Cellipse cx='0' cy='5' rx='13' ry='4'/%3E%3Cellipse cx='0' cy='-1' rx='11.5' ry='3.6'/%3E%3Cellipse cx='0' cy='-7' rx='10' ry='3.2'/%3E%3Cpath d='M-3 -9.5c2-1.5 5-1.5 7 0'/%3E%3C/g%3E%3Cg transform='translate(30 105) rotate(14) scale(0.75)' stroke='%232f9c80' stroke-opacity='.22' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' fill='none'%3E%3Cpath d='M-4 -12h8v4c0 1 1 2 3 3 4 3 6 6 6 10 0 6-6 9-13 9s-13-3-13-9c0-4 2-7 6-10 2-1 3-2 3-3z'/%3E%3Cpath d='M-6 -14h12'/%3E%3C/g%3E%3C/svg%3E") 0 0 / 260px 260px repeat !important; }
+.chl-okc .chl-nights-panel { background: #1b1b20; }
+.chl-okc .chl-h2, .chl-okc .chl-close-name, .chl-okc #co_calendar .co_calendar_head { font-family: Oswald, Arial, sans-serif !important; font-weight: 700; text-transform: uppercase !important; letter-spacing: 0.5px !important; }
+.chl-okc .chl-n { font-family: Oswald, Arial, sans-serif; color: var(--okc-yellow); }
+.chl-okc .ch-night { border-color: rgba(108, 196, 161, 0.3); }
+.chl-okc .chl-eyebrow { color: var(--okc-teal); }
+.chl-okc .chl-sponsor .chl-eyebrow { color: var(--okc-coral); }
+.chl-okc .chl-sponsor { border-color: rgba(240, 93, 94, 0.35); }
+.chl-okc #co_calendar .co_date, .chl-okc .co_date { color: var(--okc-coral) !important; }
+.chl-okc #co_calendar div:has(> .co_date), .chl-okc #co_calendar .item { border-left-color: var(--okc-teal) !important; }
+.chl-okc .chl-close-inner { background: #1b1b20; border-top-color: var(--okc-coral); }
+.chl-okc .chl-close-name { color: #fff; }
+.chl-okc .chl-close-tag { color: var(--okc-teal); }
+
+@media only screen and (max-width: 760px) {
+    .chl-okc .chabad_header .headerTitle.chl-title { letter-spacing: 0.18em; font-size: 46px; }
+    .chl-okc .chl-script { margin-left: 0; transform-origin: center; }
+    .chl-okc .chabad_header .headerSubTitle.chl-eyebrow { font-size: 20px !important; }
+    .chl-okc .chabad_header .header-desc.chl-date { font-size: 18px; }
+}
+
+/* Footer + ghost button match the charcoal palette */
+html body:has(#chabad_body_page.chl-okc) #BodyContainer,
+html body:has(#chabad_body_page.chl-okc) #BodyContainer .g960.footer { background: #17171b !important; background-color: #17171b !important; }
+html body:has(#chabad_body_page.chl-okc) #BodyContainer .g960.footer a { color: #fcc63d !important; }
+.chl-okc .chl-btn-ghost a { background: rgba(23, 23, 27, 0.4); }
+
+/* No event cards on the OKC page: the hero ends cleanly and content starts below it */
+.chl-okc .chabad_header.chl-hero { padding-bottom: 64px !important; min-height: 0 !important; }
+.chl-okc .chl-hero::after { display: none; }
+.chl-okc .chl-main { margin-top: 0 !important; padding-top: 40px !important; }
+@media only screen and (max-width: 760px) {
+    .chl-okc .chabad_header.chl-hero { padding-bottom: 0 !important; }
+    .chl-okc .chl-main { padding-top: 24px !important; }
+}
