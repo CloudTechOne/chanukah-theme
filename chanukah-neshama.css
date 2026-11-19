@@ -1,4 +1,4 @@
-/* Chanukah Landing - Neshama flyer-card skin - v1.0.0
+/* Chanukah Landing - Neshama flyer-card skin - v1.1.0
    Loads AFTER chanukah-landing.css. Adds flyer-image cards (chl-cards-media / chl-card-media).
    Only affects markup that uses those classes. */
 
@@ -61,3 +61,50 @@
 @media only screen and (max-width: 600px) {
     .chl-cards.chl-cards-media:has(> .chl-card:nth-child(4)) { grid-template-columns: 1fr; }
 }
+
+/* =====================================================================
+   v1.1.0 - Uniform flyer cards
+   - Every flyer box has the same shape (portrait 326 x 422, like a 4:5 flyer).
+     Flyers of other sizes fill the box; extra height is trimmed from the bottom.
+     Add class "chl-fit" to a card's .chl-card-img to show the WHOLE flyer instead.
+   - Every card in a row is the same height; buttons line up at the bottom;
+     descriptions are capped at 4 lines.
+   ===================================================================== */
+.chl-cards.chl-cards-media { align-items: stretch; }
+.chl-card.chl-card-media { height: 100%; }
+.chl-card-media .chl-card-img,
+.chl-card-media .chl-card-img:has(img[src*="spacer.gif"]),
+.chl-card-media .chl-card-img:has(img[src=""]) {
+    aspect-ratio: 326 / 422;
+    overflow: hidden;
+    flex: 0 0 auto;
+}
+.chl-card-media .chl-card-img img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover;
+    object-position: top center;
+}
+.chl-card-media .chl-card-img.chl-fit {
+    background: radial-gradient(circle at 50% 40%, var(--ch-royal), var(--ch-night) 80%);
+}
+.chl-card-media .chl-card-img.chl-fit img { object-fit: contain; object-position: center; }
+.chl-card-media .chl-card-body {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+}
+.chl-card-media .chl-card-title {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.chl-card-media .chl-card-text {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.chl-card-media .chl-card-text p { margin: 0; display: inline; }
+.chl-card-media .chl-card-link { margin-top: auto; padding-top: 12px; }
