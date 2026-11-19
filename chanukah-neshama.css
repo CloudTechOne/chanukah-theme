@@ -1,0 +1,63 @@
+/* Chanukah Landing - Neshama flyer-card skin - v1.0.0
+   Loads AFTER chanukah-landing.css. Adds flyer-image cards (chl-cards-media / chl-card-media).
+   Only affects markup that uses those classes. */
+
+/* No image uploaded (spacer) = the card shows its icon instead. */
+.chl-cards-media { align-items: start; }
+.chl-card.chl-card-media {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    min-height: 0;
+    overflow: hidden;
+    border-top: 0;
+}
+.chl-card.chl-card-media::before { display: none; }
+.chl-card-img {
+    position: relative;
+    display: block;
+    background: #0e1530;
+    line-height: 0;
+    font-size: 0;
+}
+.chl-card-img img {
+    display: block;
+    width: 100% !important;
+    height: auto !important;
+    max-width: none !important;
+    margin: 0 !important;
+    transition: transform 0.6s ease;
+}
+.chl-card-media:hover .chl-card-img img { transform: scale(1.03); }
+.chl-card-img a { display: block; }
+/* no flyer uploaded yet: icon placeholder */
+.chl-card-img:has(img[src*="spacer.gif"]),
+.chl-card-img:has(img[src=""]) {
+    aspect-ratio: 4 / 3;
+    background: var(--chl-ico) center / 92px auto no-repeat, linear-gradient(160deg, var(--ch-royal), var(--ch-night));
+}
+.chl-card-img img[src*="spacer.gif"], .chl-card-img img[src=""] { display: none !important; }
+.chl-card-media .chl-card-body {
+    padding: 20px 22px 22px;
+    border-top: 3px solid var(--ch-gold);
+}
+.chl-card-media .chl-card-title { font-size: 21px; }
+.chl-card-media .chl-card-link { margin-top: 12px; }
+
+@media only screen and (max-width: 960px) {
+    .chl-cards.chl-cards-media { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+}
+@media only screen and (max-width: 600px) {
+    .chl-card.chl-card-media { padding: 0; }
+    .chl-cards.chl-cards-media { grid-template-columns: 1fr; }
+}
+/* Flyer cards: 4 cards sit in one row on wide screens, 2 per row on tablets */
+.chl-cards.chl-cards-media:has(> .chl-card:nth-child(4)) { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; }
+.chl-cards-media:has(> .chl-card:nth-child(4)) .chl-card-media .chl-card-body { padding: 18px 18px 20px; }
+.chl-cards-media:has(> .chl-card:nth-child(4)) .chl-card-media .chl-card-title { font-size: 19px; }
+@media only screen and (max-width: 1100px) {
+    .chl-cards.chl-cards-media:has(> .chl-card:nth-child(4)) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media only screen and (max-width: 600px) {
+    .chl-cards.chl-cards-media:has(> .chl-card:nth-child(4)) { grid-template-columns: 1fr; }
+}
