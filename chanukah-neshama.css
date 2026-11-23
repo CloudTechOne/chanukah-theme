@@ -1,4 +1,4 @@
-/* Chanukah Landing - Neshama flyer-card skin - v1.1.0
+/* Chanukah Landing - Neshama flyer-card skin - v1.2.0
    Loads AFTER chanukah-landing.css. Adds flyer-image cards (chl-cards-media / chl-card-media).
    Only affects markup that uses those classes. */
 
@@ -108,3 +108,71 @@
 }
 .chl-card-media .chl-card-text p { margin: 0; display: inline; }
 .chl-card-media .chl-card-link { margin-top: auto; padding-top: 12px; }
+
+/* =====================================================================
+   v1.2.0 - Mobile: show there is more below the hero
+   - Compact hero on phones so the first flyer card peeks into the first screen
+   - Bouncing "Chanukah Events" cue at the bottom of the hero
+   Desktop is unchanged.
+   ===================================================================== */
+@media only screen and (max-width: 760px) {
+    .chl-hero-inner { padding: 18px 18px 58px !important; }
+    .chl-hero .ch-bh { top: 8px; }
+    .ch-menorah-slot,
+    .chl-hero-art .ch-menorah-slot { max-width: 150px !important; margin: 0 auto 10px !important; }
+    .chabad_header .headerSubTitle.chl-eyebrow { font-size: 10px !important; letter-spacing: 3px; margin-bottom: 4px !important; }
+    .chabad_header .headerTitle.chl-title { font-size: 38px !important; line-height: 1 !important; margin-bottom: 8px !important; }
+    .chl-tagline { display: none !important; }
+    .chabad_header .header-desc.chl-date { font-size: 12px !important; padding: 6px 14px !important; }
+
+    /* compact countdown */
+    .chl-hero-art .chl-countdown-slot.ready { margin: 12px auto 0 !important; max-width: 330px !important; }
+    .chl-tn { padding: 10px 12px 10px !important; border-radius: 16px !important; }
+    .chl-tn-label { font-size: 9px !important; letter-spacing: 2px !important; margin-bottom: 6px !important; }
+    .chl-tn .chl-cd { gap: 6px !important; }
+    .chl-tn .chl-cd > span { width: 54px !important; padding: 5px 0 4px !important; border-radius: 10px !important; }
+    .chl-tn .chl-cd b { font-size: 20px !important; }
+    .chl-tn .chl-cd i { font-size: 8px !important; }
+    .chl-tn-cd .chl-tn-foot, .chl-tn-cd .chl-tn-city { display: none !important; }
+    .chl-tn-live .chl-tn-flames { height: 18px; margin: 0 0 4px; }
+    .chl-tn-live .chl-tn-flames i { width: 8px; height: 17px; }
+    .chl-tn-live .chl-tn-big { font-size: 19px !important; }
+    .chl-tn-live .chl-tn-foot { margin-top: 6px; padding-top: 6px; font-size: 12px; }
+
+    /* buttons side by side */
+    .chl-actions { flex-direction: row !important; align-items: stretch !important; gap: 10px !important; margin-top: 14px !important; }
+    .chl-actions .chl-btn { flex: 1 1 0; min-width: 0; }
+    .chl-actions .chl-btn a { display: flex !important; align-items: center; justify-content: center; height: 100%; min-height: 46px; padding: 8px 10px !important; font-size: 11px !important; letter-spacing: 1px !important; line-height: 1.25; }
+
+    /* scroll cue */
+    .chabad_header.chl-hero::after {
+        content: "Chanukah Events" !important;
+        display: block !important;
+        position: absolute;
+        left: 50%;
+        bottom: 12px;
+        top: auto;
+        right: auto;
+        width: auto;
+        height: auto !important;
+        padding-bottom: 20px;
+        transform: translateX(-50%);
+        background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 14'%3E%3Cpath d='M2 2l10 10L22 2' fill='none' stroke='%23e2b44f' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center bottom / 18px 11px no-repeat !important;
+        font-family: var(--ch-body), Arial, sans-serif;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--ch-gold);
+        white-space: nowrap;
+        z-index: 4;
+        pointer-events: none;
+        animation: chlCue 1.6s ease-in-out infinite;
+    }
+    .chl-main { padding-top: 16px !important; }
+}
+@keyframes chlCue {
+    0%, 100% { transform: translate(-50%, 0); opacity: 0.85; }
+    50% { transform: translate(-50%, 6px); opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) { .chabad_header.chl-hero::after { animation: none !important; } }
