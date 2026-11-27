@@ -1,4 +1,4 @@
-/* Chanukah Landing - Lubavitch Aventura South (LAS) flyer-card skin - v1.0.0
+/* Chanukah Landing - Lubavitch Aventura South (LAS) flyer-card skin - v1.1.0
    Same flyer cards as chanukah-neshama.css v1.1.0
    Loads AFTER chanukah-landing.css. Adds flyer-image cards (chl-cards-media / chl-card-media).
    Only affects markup that uses those classes. */
@@ -109,3 +109,9 @@
 }
 .chl-card-media .chl-card-text p { margin: 0; display: inline; }
 .chl-card-media .chl-card-link { margin-top: auto; padding-top: 12px; }
+
+/* =====================================================================
+   v1.1.0 - Subpages: hide the hero buttons (RSVP for the Lighting / Sponsor a Night).
+   The landing page body has .section_root; subpages don't, so the landing page is unchanged.
+   ===================================================================== */
+body:not(.section_root) .chabad_header .chl-actions { display: none !important; }
