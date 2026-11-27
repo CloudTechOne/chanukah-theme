@@ -1,7 +1,7 @@
-/* Chanukah Landing Page for ChabadOne - v2.1.2
-   - Before Chanukah the menorah is fully lit; over the last 8 days one candle
-     burns down per day, so only the shamash remains when Chanukah begins.
-   - During Chanukah the candles light again, night by night.
+/* Chanukah Landing Page for ChabadOne - v2.2.0
+   - Before Chanukah the menorah is fully lit (all 8 candles + shamash).
+   - Night 1 shows the shamash + 1 candle; one more candle lights each night.
+   - After Chanukah all 8 stay lit.
    - Hero card: countdown before Chanukah; during Chanukah shows tonight's night,
      candle count, and the time + date typed into that night's box in the schedule,
      plus the city from the schedule's editable City field.
@@ -46,15 +46,6 @@
                 else { lights[i].classList.add("out"); lights[i].style.opacity = ""; }
             }
         }
-        /* Before Chanukah: full menorah until the last 8 days, then one candle burns down each day.
-           The leftmost (newest) candle goes out first, so night 1's candle is the last one standing. */
-        var DIM_DAYS = 8;
-        function preLight(msLeft) {
-            var days = msLeft / 86400000;
-            if (days >= DIM_DAYS) { light(8, 0); return; }
-            var whole = Math.floor(days);
-            light(whole, days - whole);
-        }
         function tonight(n) {
             for (var i = 0; i < nights.length; i++) {
                 if (nights[i].classList.contains("n" + n)) { nights[i].classList.add("is-tonight"); } else { nights[i].classList.remove("is-tonight"); }
@@ -90,7 +81,7 @@
                 u.h.innerHTML = pad(Math.floor(s % 86400 / 3600));
                 u.m.innerHTML = pad(Math.floor(s % 3600 / 60));
                 u.s.innerHTML = pad(s % 60);
-                preLight(diff); tonight(0);
+                light(8); tonight(0);
                 return;
             }
             var night = Math.floor((t - start) / 86400000) + 1;
